@@ -102,8 +102,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !Ref pOperatingSystem
-      InstanceType: !Ref pInstanceType
-      Monitoring: true
+      Monitoring: false
       IamInstanceProfile: !Ref rec2InstanceProfile
       SourceDestCheck: true
       SubnetId: !Ref pSubnet
