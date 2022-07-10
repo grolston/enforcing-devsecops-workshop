@@ -13,5 +13,5 @@ jobs:
       with:
         data_directory: './cloudformation/' ## change to your template directory
         rule_set: "NIST800-53Rev5"
-        show_summary: 'fail'
+        show_summary: 'none'
         output_format: 'json'
