@@ -18,10 +18,6 @@ Metadata:
         Parameters:
           - pVpc
           - pSubnet
-      - Label:
-          default: "Optional Configuration"
-        Parameters:
-          - pBootstrapUrl
     ParameterLabels:
       pOperatingSystem:
         default: "Operating System"
@@ -37,13 +33,8 @@ Metadata:
         default: "Subnet"
       pVpc:
         default: "VPC"
-      pBootstrapUrl:
-        default: "Bootstrap URL"
 
 Parameters:
-  pBootstrapUrl:
-    Type: String
-    Description: URL to download and execute a bash script. This field is not required.
   pSubnet:
     Description: The subnet to launch the instance in to. It must be part of the VPC chosen above.
     Type: AWS::EC2::Subnet::Id
@@ -93,19 +84,9 @@ Rules:
           - !RefAll "AWS::EC2::VPC::Id"
         AssertDescription: All subnets must in the VPC
 
-Conditions:
-  cUseBootstrapUrl: !Not [!Equals ["", !Ref pBootstrapUrl]]
-
 Resources:
   rSecurityGroupDefault:
     Type: AWS::EC2::SecurityGroup
-    Metadata:
-      cfn_nag:
-        rules_to_suppress:
-          - id: W5
-            reason: This default security group is purposely open to the world for egress for ease of adoption.
-          - id: W29
-            reason: This default security group is purposely open on all ports for egress for ease of adoption.
     Properties:
       GroupDescription: !Sub "Default SG for SC Product ${pTagNameValue} "
       VpcId: !Ref pVpc
