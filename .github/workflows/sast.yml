@@ -13,5 +13,5 @@ jobs:
       with:
         data_directory: './cloudformation/' ## change to your template directory
         rule_set: "FedRAMP-Moderate"
-        show_summary: 'none'
+        show_summary: 'fail'
         output_format: 'single-line-summary'
