@@ -1,0 +1,17 @@
+name: 'sast'
+
+## run ci testing on all push events
+on: [push]
+
+jobs:
+  ## Guard rule set
+  sast-guard:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: grolston/guard-action@main
+      with:
+        data_directory: './cloudformation/' ## change to your template directory
+        rule_set: "NIST800-Rev4"
+        show_summary: 'all'
+        output_format: 'json'
