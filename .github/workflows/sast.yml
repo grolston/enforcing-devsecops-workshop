@@ -12,6 +12,6 @@ jobs:
     - uses: grolston/guard-action@main
       with:
         data_directory: './cloudformation/' ## change to your template directory
-        rule_set: "FedRAMP-Moderate"
+        rule_set: "NIST800-53Rev5"
         show_summary: 'all'
         output_format: 'single-line-summary'
