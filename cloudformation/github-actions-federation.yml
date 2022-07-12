@@ -37,7 +37,7 @@ Resources:
   RoleGithubActions:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !Sub ${RoleName}-GA
+      RoleName: !Ref RoleName
       AssumeRolePolicyDocument:
         Statement:
           - Effect: Allow
