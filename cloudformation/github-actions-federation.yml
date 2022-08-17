@@ -57,5 +57,5 @@ Outputs:
     Value: !GetAtt IdpGitHubOidc.Arn
 
   RoleGithubActionsARN:
-    Description: "ARN of Read Only Access Role for GitHub Actions"
+    Description: "CICD Role for GitHub Actions"
     Value: !GetAtt RoleGithubActions.Arn
